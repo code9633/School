@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Records</title>
+</head>
+<body>
+    <h1>Stdent Records Visualization</h1>
+
+    <h2>Schools</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for school in schools %}
+            <tr>
+                <td>{{ school.id }}</td>
+                <td>{{ school.name }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h2>Classes</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Class</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for class in classes %}
+            <tr>
+                <td>{{ class.id }}</td>
+                <td>{{ class.class_name }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h2>Asessment_Areas</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for assessmentArea in assessmentAreas %}
+            <tr>
+                <td>{{ assesmentArea.id }}</td>
+                <td>{{ assesmentArea.name }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+
+    <h2>Students</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Fullname</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for student in students %}
+            <tr>
+                <td>{{ student.id }}</td>
+                <td>{{ student.fullname }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h2>Answers</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Answers</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for answer in answers %}
+            <tr>
+                <td>{{ answer.id }}</td>
+                <td>{{ answer.anwers }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    
+    <h2>Summary</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>School Id</th>
+                <th>Sydney Participants</th>
+                <th>Sydney Percentile</th>
+                <th>Assessment Area Id</th>
+                <th>Award Id</th>
+                <th>Correct Answer Percentage Per Class</th>
+                <th>Correct Answer</th>
+                <th>Student Id</th>
+                <th>Participant</th>
+                <th>Student Score</th>
+                <th>Subject Id </th>
+                <th>Category Id</th>
+                <th>Year Level Name</th>
+                <th>Answer Id</th>
+                <th>Correct Answer Id</th>  
+            </tr>
+        </thead>
+        <tbody>
+            {% for summary in summaries %}
+            <tr>
+                <td>{{ summary.school.id}}</td>
+                <td>{{ summary.sydney_participant }}</td>
+                <td>{{ summary.sydney_percentile }}</td>
+                <td>{{ summary.assessment_area.name }}</td>
+                <td>{{ summary.award.name }}</td>
+                <td>{{ summary.class_id.class_name }}</td>
+                <td>{{ summary.correct_answer_percentage_per_class }}</td>
+                <td>{{ summary.correct_answer }}</td>
+                <td>{{ summary.student.fullname }}</td>
+                <td>{{ summary.participant }}</td>
+                <td>{{ summary.student_score }}</td>
+                <td>{{ summary.subject_id.subject }}</td>
+                <td>{{ summary.category_id }}</td>
+                <td>{{ summary.year_level_name }}</td>
+                <td>{{ summary.answer_id }}</td>
+                <td>{{ summary.correct_answer_id }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+
+    <h2>Awards</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for award in awards %}
+            <tr>
+                <td>{{ award.id }}</td>
+                <td>{{ award.name}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h2>Subjects</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Subjects</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for subject in subjects %}
+            <tr>
+                <td>{{ subject.id }}</td>
+                <td>{{ subject.subject}}</td>
+                <td>{{ subject.subject_score}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+   
+    
+
+
+
+</body>
+</html>

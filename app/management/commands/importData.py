@@ -1,19 +1,20 @@
 import csv
 from django.core.management.base import BaseCommand
-from app.models import School, Class, AssessmentArea, Student, Answers, Summary, Awards, Subject
+from app.models import School, Class, AssessmentArea, Student, Answers, Summary, Awards, Subject, CorrectAnswers
 
 class Command(BaseCommand):
     help = 'Import data from CSV files'
 
     def handle(self, *args, **options):
-        # CSV file paths
+        print("Load data to the database")
+
         csv_files = [
             'csv/Ganison_dataset_1.csv',
-            'csv/Ganison_dataset_2.csv',
-            'csv/ganison_dataset_3.csv',
-            'csv/ganison_dataset_4.csv',
-            'csv/ganison_dataset_5.csv',
-            'csv/ganison_dataset_6.csv'
+            # 'csv/Ganison_dataset_2.csv',
+            # 'csv/ganison_dataset_3.csv',
+            # 'csv/ganison_dataset_4.csv',
+            # 'csv/ganison_dataset_5.csv',
+            # 'csv/ganison_dataset_6.csv'
         ]
         
 
@@ -23,11 +24,10 @@ class Command(BaseCommand):
                 for row in reader:
                     # Extract data from the row
                     school_name = row['school_name']
-                    year = row['year']
                     student_id = row['StudentID']
                     first_name = row['First Name']
                     last_name = row['Last Name']
-                    # Extract other fields...
+
 
                     # Create School object
                     school, _ = School.objects.get_or_create(name=school_name)
@@ -46,6 +46,10 @@ class Command(BaseCommand):
                     # Create Answers object
                     answers = row['Answers']
                     answers_obj, _ = Answers.objects.get_or_create(answers=answers)
+                    
+                    # create Correct Answers object
+                    correct_answers = row['Correct Answers']
+                    correct_answers_obj, _  = CorrectAnswers.objects.get_or_create(correct_answers = correct_answers)
 
                     # Create Awards object
                     award_name = row['award']
@@ -57,24 +61,22 @@ class Command(BaseCommand):
                     subject, _ = Subject.objects.get_or_create(subject=subject_name, subject_score=subject_score)
 
                     # Create Summary object
-                    # Create Summary object
                     summary = Summary(
                         school=school,
                         sydney_participant=row['sydney_participants'],
                         sydney_percentile=row['sydney_percentile'],
                         assessment_area=assessment_area,
-                        award=award,
-                        class_id=class_obj,
-                        correct_answer_percentage_per_class=row['correct_answer_percentage_per_class'],
-                        correct_answer=row.get('correct_answer', ''),
+                        award = award,
+                        clss = class_obj,
+                        correct_answer_percentage_per_class = row['correct_answer_percentage_per_class'],
+                        correct_answer = correct_answers,
                         student=student,
                         participant=row['participant'],
                         student_score=row['student_score'],
-                        subject_id=subject,
-                        category_id = row.get('category_id', None),
-                        year_level_name=row.get('year_level_name', ''),
-                        answer_id=row.get('answer_id', '') if row.get('answer_id', '') else None,
-                        correct_answer_id=row.get('correct_answer_id', '') if row.get('correct_answer_id', '') else None,
+                        subject = subject,
+                        year_level_name = row['Year Level'],
+                        answer = answers_obj ,
+                        correct_answers= correct_answers_obj,
                     )
 
                     summary.save()

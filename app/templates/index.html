@@ -8,7 +8,7 @@
 <body>
     <h1>Stdent Records Visualization</h1>
 
-    <h2>Schools</h2>
+   <h2>Schools</h2>
     <table border="1">
         <thead>
             <tr>
@@ -24,7 +24,7 @@
             </tr>
             {% endfor %}
         </tbody>
-    </table>
+    </table> 
 
     <h2>Classes</h2>
     <table border="1">
@@ -42,9 +42,9 @@
             </tr>
             {% endfor %}
         </tbody>
-    </table>
+    </table> 
 
-    <h2>Asessment_Areas</h2>
+    <h2>Asessment Areas</h2>
     <table border="1">
         <thead>
             <tr>
@@ -55,8 +55,8 @@
         <tbody>
             {% for assessmentArea in assessmentAreas %}
             <tr>
-                <td>{{ assesmentArea.id }}</td>
-                <td>{{ assesmentArea.name }}</td>
+                <td>{{ assessmentArea.id }}</td>
+                <td>{{ assessmentArea.name }}</td>
             </tr>
             {% endfor %}
         </tbody>
@@ -93,7 +93,7 @@
             {% for answer in answers %}
             <tr>
                 <td>{{ answer.id }}</td>
-                <td>{{ answer.anwers }}</td>
+                <td>{{ answer.answers }}</td>
             </tr>
             {% endfor %}
         </tbody>
@@ -114,7 +114,6 @@
                 <th>Participant</th>
                 <th>Student Score</th>
                 <th>Subject Id </th>
-                <th>Category Id</th>
                 <th>Year Level Name</th>
                 <th>Answer Id</th>
                 <th>Correct Answer Id</th>  
@@ -126,19 +125,17 @@
                 <td>{{ summary.school.id}}</td>
                 <td>{{ summary.sydney_participant }}</td>
                 <td>{{ summary.sydney_percentile }}</td>
-                <td>{{ summary.assessment_area.name }}</td>
-                <td>{{ summary.award.name }}</td>
-                <td>{{ summary.class_id.class_name }}</td>
+                <td>{{ summary.assessment_area.id }}</td>
+                <td>{{ summary.award.id }}</td>
                 <td>{{ summary.correct_answer_percentage_per_class }}</td>
                 <td>{{ summary.correct_answer }}</td>
-                <td>{{ summary.student.fullname }}</td>
+                <td>{{ summary.student.id }}</td>
                 <td>{{ summary.participant }}</td>
                 <td>{{ summary.student_score }}</td>
-                <td>{{ summary.subject_id.subject }}</td>
-                <td>{{ summary.category_id }}</td>
+                <td>{{ summary.subject.id }}</td>
                 <td>{{ summary.year_level_name }}</td>
-                <td>{{ summary.answer_id }}</td>
-                <td>{{ summary.correct_answer_id }}</td>
+                <td>{{ summary.answer.id }}</td>
+                <td>{{ summary.correct_answers.id }}</td>
             </tr>
             {% endfor %}
         </tbody>
@@ -182,8 +179,6 @@
         </tbody>
     </table>
 
-   
-    
 
 
 

@@ -9,7 +9,7 @@ def visualizeData(request):
     students = Student.objects.all()
     answers  = Answers.objects.all()
     summaries = Summary.objects.all()
-    awards = Summary.objects.all()
+    awards = Awards.objects.all()
     subjects = Subject.objects.all()
 
     return  render(request, "index.html", {

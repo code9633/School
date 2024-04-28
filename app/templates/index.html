@@ -122,20 +122,20 @@
         <tbody>
             {% for summary in summaries %}
             <tr>
-                <td>{{ summary.school.id}}</td>
+                <td>{{ summary.school_id}}</td>
                 <td>{{ summary.sydney_participant }}</td>
                 <td>{{ summary.sydney_percentile }}</td>
-                <td>{{ summary.assessment_area.id }}</td>
-                <td>{{ summary.award.id }}</td>
+                <td>{{ summary.assessment_area_id }}</td>
+                <td>{{ summary.award_id }}</td>
                 <td>{{ summary.correct_answer_percentage_per_class }}</td>
                 <td>{{ summary.correct_answer }}</td>
-                <td>{{ summary.student.id }}</td>
+                <td>{{ summary.student_id }}</td>
                 <td>{{ summary.participant }}</td>
                 <td>{{ summary.student_score }}</td>
-                <td>{{ summary.subject.id }}</td>
+                <td>{{ summary.subject_id }}</td>
                 <td>{{ summary.year_level_name }}</td>
-                <td>{{ summary.answer.id }}</td>
-                <td>{{ summary.correct_answers.id }}</td>
+                <td>{{ summary.answer_id }}</td>
+                <td>{{ summary.correct_answers_id }}</td>
             </tr>
             {% endfor %}
         </tbody>
